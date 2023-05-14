@@ -1,0 +1,113 @@
+﻿<Window x:Class="languageSchool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:languageSchool"
+        mc:Ignorable="d"
+        Title="Клиент" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <TabControl>
+            <TabItem x:Name="client" IsSelected="True" Header="Клиент">
+                <Grid  Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="129*"/>
+                        <ColumnDefinition Width="665*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid MouseDoubleClick="uslugi_MouseDoubleClick"  FontFamily="Comic Sans MS" x:Name="uslugi" Margin="10,91,319,54" Grid.ColumnSpan="2" >
+
+                    </DataGrid>
+                    <Label Content="Услуга:" HorizontalAlignment="Left" Margin="455,155,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Image Source="{Binding ImgPath}" HorizontalAlignment="Left" Height="100" Margin="459,25,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+
+                    <TextBox x:Name="name" Text="{Binding SelectedItem.UslugaName, ElementName=uslugi}" HorizontalAlignment="Left" Margin="521,155,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.Column="1"/>
+                    <Label Content="Стоимость:" HorizontalAlignment="Left" Margin="428,186,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="cost" Text="{Binding SelectedItem.UslugiCost, ElementName=uslugi}" HorizontalAlignment="Left" Height="26" Margin="521,186,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Продолжительность:" HorizontalAlignment="Left" Margin="362,217,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="time" Text="{Binding SelectedItem.UslugaTime, ElementName=uslugi}" HorizontalAlignment="Left" Margin="521,217,0,0" VerticalAlignment="Top" Width="120" Height="26" Grid.Column="1"/>
+                    <Label Content="Скидка:" HorizontalAlignment="Left" Margin="453,248,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="skidka" Text="{Binding SelectedItem.UslugiSkid, ElementName=uslugi}" HorizontalAlignment="Left" Height="26" Margin="521,248,0,0" VerticalAlignment="Top" Width="60" Grid.Column="1"/>
+                    <Label Content="Сортировка по цене" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="price" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="143" Grid.ColumnSpan="2">
+                        <ComboBoxItem Content="Сначала дешевые" Selected="ComboBoxItem_Selected" ></ComboBoxItem>
+                        <ComboBoxItem Content="Сначала дорогие" Selected="ComboBoxItem_Selected_1"></ComboBoxItem>
+                        <ComboBoxItem Content="показать все" Selected="ComboBoxItem_Selected_3"/>
+                    </ComboBox>
+                    <Label Content="Сортировка по скидке" HorizontalAlignment="Left" Margin="44,14,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="skid" HorizontalAlignment="Left" Margin="44,45,0,0" VerticalAlignment="Top" Width="158" Grid.Column="1">
+                        <ComboBoxItem Content="0-5%" Selected="ComboBoxItem_Selected_4" />
+                        <ComboBoxItem Content="5-15%" Selected="ComboBoxItem_Selected_5"/>
+                        <ComboBoxItem Content="15-30%" Selected="ComboBoxItem_Selected_6"/>
+                        <ComboBoxItem Content="30-70%" Selected="ComboBoxItem_Selected_7"/>
+                        <ComboBoxItem Content="70-100%" Selected="ComboBoxItem_Selected_8"/>
+                        <ComboBoxItem Content="показать все" Selected="ComboBoxItem_Selected_9"/>
+                    </ComboBox>
+                    <TextBox x:Name="poisk" TextChanged="poisk_TextChanged"  HorizontalAlignment="Left" Height="22" Margin="217,45,0,0" VerticalAlignment="Top" Width="145" Grid.Column="1"/>
+                    <Label Content="Название/описание" HorizontalAlignment="Left" Margin="217,14,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label x:Name="star"  HorizontalAlignment="Left" Margin="590,316,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="Товаров:" HorizontalAlignment="Left" Margin="8,360,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="kolVo" HorizontalAlignment="Left" Height="20" Margin="81,365,0,0" VerticalAlignment="Top" Width="29" Foreground="Black" Cursor="AppStarting" TextAlignment="Center"/>
+                    <Label Content="из" HorizontalAlignment="Left" Height="25" Margin="115,360,0,0" VerticalAlignment="Top" Width="33" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="all"  HorizontalAlignment="Left" Height="20" Margin="24,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" TextAlignment="Center" Grid.Column="1" />
+                    <Button x:Name="delete" Content="Удалить услугу" Click="delete_Click" HorizontalAlignment="Left" Height="25" Margin="408,291,0,0" VerticalAlignment="Top" Width="207" Grid.Column="1"/>
+                    <Button x:Name="new" Click="new_Click"  Content="Добавить услугу" HorizontalAlignment="Left" Height="26" Margin="408,326,0,0" VerticalAlignment="Top" Width="207" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="adminka" MouseDoubleClick="admin_MouseDoubleClick" Header="Администратор">
+                <Grid Background="#FFE5E5E5">
+                    <Grid  Background="#FFE5E5E5">
+                        <DataGrid  FontFamily="Comic Sans MS" x:Name="uslugi1" Margin="10,91,542,75" >
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Записать клиента" Click="MenuItem_Click" ></MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                        </DataGrid>
+                        <Label Content="Услуга:" HorizontalAlignment="Left" Margin="264,196,0,0" VerticalAlignment="Top"/>
+                        <Image Source="{Binding ImgPath}" HorizontalAlignment="Left" Height="100" Margin="274,91,0,0" VerticalAlignment="Top" Width="100"/>
+
+                        <TextBox x:Name="name1" Text="{Binding SelectedItem.UslugaName, ElementName=uslugi1}" HorizontalAlignment="Left" Margin="335,198,0,0" VerticalAlignment="Top" Width="199" Height="26"/>
+                        <Label Content="Стоимость:" HorizontalAlignment="Left" Margin="274,231,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="cost1" Text="{Binding SelectedItem.UslugiCost, ElementName=uslugi1}" HorizontalAlignment="Left" Height="26" Margin="376,229,0,0" VerticalAlignment="Top" Width="158"/>
+                        <Label Content="Время услуги (сек):" HorizontalAlignment="Left" Margin="264,260,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="time1" Text="{Binding SelectedItem.UslugaTime, ElementName=uslugi1}" HorizontalAlignment="Left" Margin="414,260,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+                        <Label Content="Скидка:" HorizontalAlignment="Left" Margin="346,291,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="skidka1" Text="{Binding SelectedItem.UslugiSkid, ElementName=uslugi1}" HorizontalAlignment="Left" Height="26" Margin="414,291,0,0" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="poisk1" TextChanged="poisk1_TextChanged"  HorizontalAlignment="Left" Height="22" Margin="59,45,0,0" VerticalAlignment="Top" Width="145"/>
+                        <Label Content="Название/описание" HorizontalAlignment="Left" Margin="59,14,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="star1"  HorizontalAlignment="Left" Margin="719,316,0,0" VerticalAlignment="Top"/>
+                        <Button x:Name="delete1" Content="Удалить услугу" Click="delete1_Click" HorizontalAlignment="Left" Height="25" Margin="559,159,0,0" VerticalAlignment="Top" Width="207"/>
+                        <Button x:Name="save" Click="save_Click" Content="Сохранить изменения" HorizontalAlignment="Left" Height="30" Margin="559,198,0,0" VerticalAlignment="Top" Width="207">
+                            <UIElement.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </UIElement.RenderTransform>
+                        </Button>
+                        <Button x:Name="newUsl" Click="newUsl_Click" Content="Добавить услугу" HorizontalAlignment="Left" Height="31" Margin="559,238,0,0" VerticalAlignment="Top" Width="207"/>
+                        <Label Content="перед добавлением и редактированием уберите сотую часть суммы!" HorizontalAlignment="Left" Height="29" Margin="265,331,0,0" VerticalAlignment="Top" Width="501" Foreground="#FFCE2525"/>
+                        <Button x:Name="show" Click="show_Click" Content="Посмотреть записи" HorizontalAlignment="Left" Height="30" Margin="579,14,0,0" VerticalAlignment="Top" Width="187"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

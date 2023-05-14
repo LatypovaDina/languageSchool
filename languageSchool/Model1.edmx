@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SchoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pol" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateUsluga" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birth" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UslugaName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UslugaPhoto" Type="nvarchar(max)" />
+          <Property Name="UslugaTime" Type="int" Nullable="false" />
+          <Property Name="UslugiCost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UslugiSkid" Type="float" />
+        </EntityType>
+        <EntityType Name="UslugaClient">
+          <Key>
+            <PropertyRef Name="ID_Uslugi" />
+          </Key>
+          <Property Name="ID_Uslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UslName" Type="nvarchar(max)" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="Client" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Хранилище SchoolModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usluga" EntityType="Self.Usluga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UslugaClient" EntityType="Self.UslugaClient" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateUsluga" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birth" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UslugaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UslugaPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UslugaTime" Type="Int32" Nullable="false" />
+          <Property Name="UslugiCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UslugiSkid" Type="Double" />
+        </EntityType>
+        <EntityType Name="UslugaClient">
+          <Key>
+            <PropertyRef Name="ID_Uslugi" />
+          </Key>
+          <Property Name="ID_Uslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UslName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Client" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Usluga" EntityType="Self.Usluga" />
+          <EntitySet Name="UslugaClient" EntityType="Self.UslugaClient" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SchoolModelContainer" CdmEntityContainer="SchoolEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="SchoolModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Pol" ColumnName="Pol" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DateUsluga" ColumnName="DateUsluga" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usluga">
+            <EntityTypeMapping TypeName="SchoolModel.Usluga">
+              <MappingFragment StoreEntitySet="Usluga">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UslugaName" ColumnName="UslugaName" />
+                <ScalarProperty Name="UslugaPhoto" ColumnName="UslugaPhoto" />
+                <ScalarProperty Name="UslugaTime" ColumnName="UslugaTime" />
+                <ScalarProperty Name="UslugiCost" ColumnName="UslugiCost" />
+                <ScalarProperty Name="UslugiSkid" ColumnName="UslugiSkid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UslugaClient">
+            <EntityTypeMapping TypeName="SchoolModel.UslugaClient">
+              <MappingFragment StoreEntitySet="UslugaClient">
+                <ScalarProperty Name="ID_Uslugi" ColumnName="ID_Uslugi" />
+                <ScalarProperty Name="UslName" ColumnName="UslName" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

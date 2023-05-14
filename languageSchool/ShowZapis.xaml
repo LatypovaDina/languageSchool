@@ -1,0 +1,30 @@
+﻿<Window x:Class="languageSchool.ShowZapis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:languageSchool"
+        mc:Ignorable="d"
+        Title="ShowZapis" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
+    <Grid>
+        <DataGrid x:Name="zap" MouseDoubleClick="zap_MouseDoubleClick" HorizontalAlignment="Left" Height="261" Margin="38,65,0,0" VerticalAlignment="Top" Width="404" />
+        <Label Content="Услуга" HorizontalAlignment="Left" Margin="494,65,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="us"  HorizontalAlignment="Left" Margin="559,65,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="480,96,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="surn" HorizontalAlignment="Left" Margin="559,96,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="506,127,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="name" HorizontalAlignment="Left" Margin="559,127,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="479,160,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="patr" HorizontalAlignment="Left" Margin="559,158,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Почта" HorizontalAlignment="Left" Margin="497,191,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="email" HorizontalAlignment="Left" Margin="559,196,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" Margin="483,227,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="phone" HorizontalAlignment="Left" Margin="559,227,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <Label Content="Время" HorizontalAlignment="Left" Margin="497,258,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="time"  HorizontalAlignment="Left" Margin="559,258,0,0" VerticalAlignment="Top" Height="26" Width="219"/>
+        <TextBlock x:Name="ost"  HorizontalAlignment="Left" Height="49" Margin="596,309,0,0"  VerticalAlignment="Top" Width="182"/>
+        <Label Content="Осталось:" HorizontalAlignment="Left" Margin="519,312,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="back" Click="back_Click"   Content="назад" HorizontalAlignment="Left" Height="31" Margin="310,372,0,0" VerticalAlignment="Top" Width="229"/>
+
+    </Grid>
+</Window>
